@@ -4,7 +4,46 @@
     </div>
     <div class="editor-container">
         <div class="editor-component">
+            <form>
+                <select class="ec-input-field" id="ec-form-select">
+                    <option>Select Form to Preview/Edit</option>
+                </select>
 
+                <input class="ec-input-button" type="button" value="Create New"/>
+                <br>
+
+                <input class="ec-input-field" placeholder="Form Name" type="text" id="ec-form-name"/>
+                <input class="ec-input-button" type="button" value="Save"/>
+                <br><br>
+
+                <label>Add New Element:</label>
+                <br>
+                <input class="ec-input-field" type="text" id="ec-element-label" placeholder="Enter Element's Label"/>
+                <br>
+
+                <select class="ec-input-field" id="ec-element-type">
+                    <option value="">Select Element  Type</option>
+                </select>
+                <br>
+
+                <select class="ec-input-field" id="ec-element-data-type">
+                    <option value="">Select Element Data Type</option>
+                </select>
+                <br>
+
+                <select class="ec-input-field"  id="ec-element-required">
+                    <option value="">Active by default?</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                <br>
+
+                <input class="ec-input-field" type="text" id="ec-element-depends-on" placeholder="Comma Seperated Element Ids"/>
+
+                <input class="ec-input-button" type="submit" value="Add Element"/>
+                <br>
+
+            </form>
         </div>
         <div class="preview-component">
 
