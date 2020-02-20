@@ -1,0 +1,44 @@
+.main-container {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+.header-component {
+    height: 10%;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: black;
+    color: powderblue;
+    padding-left: 5%;
+}
+.editor-container {
+    display: flex;
+    height: 80%;
+    width: 100%;
+    align-items: center;
+}
+.editor-component {
+    height: 90%;
+    width: 40%;
+    box-sizing: border-box;
+    background-color: mintcream;
+    box-shadow: 10px 10px 10px black;
+    margin-left: 10px;
+}
+.preview-component {
+    height: 90%;
+    width: 55%;
+    box-sizing: border-box;
+    background-color: mintcream;
+    box-shadow: 10px 10px 10px black;
+    margin-left: auto;
+    margin-right: 20px;
+}
+.footer-component {
+    height: 10%;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: black;
+    color: powderblue;
+    padding: 20px;
+}
