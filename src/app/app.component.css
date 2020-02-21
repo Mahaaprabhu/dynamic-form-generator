@@ -1,74 +1,59 @@
 .main-container {
-    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     width: 100%;
-    box-sizing: border-box;
-}
-.header-component {
-    height: 10%;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: black;
-    color: powderblue;
-    padding-left: 5%;
-}
-.editor-container {
-    display: flex;
-    height: 80%;
-    width: 100%;
-    align-items: center;
-}
-.editor-component {
-    height: 90%;
-    width: 40%;
-    box-sizing: border-box;
-    background-color: mintcream;
-    box-shadow: 10px 10px 10px black;
-    margin-left: 10px;
-    padding: 20px;
-    border: 2px solid deepskyblue;
-}
-.preview-component {
-    height: 90%;
-    width: 55%;
-    box-sizing: border-box;
-    background-color: mintcream;
-    box-shadow: 10px 10px 10px black;
-    margin-left: auto;
-    margin-right: 20px;
-}
-.footer-component {
-    height: 10%;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: black;
-    color: powderblue;
-    padding: 20px;
+    height: 85%;
+    background-image: linear-gradient(to right, black, black, grey , steelblue, black);
 }
 
-.ec-input-field {
+header {
+    height: 6%;
+    padding: 15px 5px 5px 50px;
+    color: gray;
+    background-image: linear-gradient(to right, black, black, grey , steelblue, black);
+}
+
+footer {
+    height: 4%;
+    padding: 5px 5px 5px 50px;
+    color: grey;
+    background-image: linear-gradient(to right, black, black, grey , steelblue, black);
+}
+
+.console {
+    border: 1px solid black;
+    overflow: scroll;
+    margin: 40px;
+    box-shadow: 10px 10px 10px black;
+    padding: 20px 80px;
+    background-color: whitesmoke;
+}
+
+.console-input {
+    border: none;
+    border-bottom: 1px solid darkseagreen;
     margin: 0;
-    width: 250px;
-    height: 35px;
-    background-color: black;
-    color: powderblue;
+    margin-bottom: 10px;
     border-radius: 10px;
+    height: 20px;
+    padding-left: 20px;
+    width: 80%;
     box-sizing: border-box;
-    padding-left: 10px;
-    margin-top: 10px;
+    background-color: whitesmoke;
 }
 
-.ec-input-field::placeholder {
-    color: powderblue;
-}
-
-.ec-input-button {
-    margin: 0;
-    width: 100px;
-    height: 35px;
+.console-button {
     background-color: steelblue;
-    color: powderblue;
-    border-radius: 10px;
-    box-sizing: border-box;
-    padding-left: 10px;
-    margin-top: 10px;
+    height: 30px;
+    width: 100px;
+    border-radius: 50px;
+    color: floralwhite;
+}
+
+.console-button-large {
+    background-color: steelblue;
+    height: 40px;
+    width: 130px;
+    border-radius: 50px;
+    color: floralwhite;
 }

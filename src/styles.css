@@ -2,12 +2,11 @@ html, body {
     width: 100%;
     height: 100%;
     margin: 0;
-    background-color: white;
+    box-sizing: border-box;
 }
-
-.no-margin {margin: 0;}
-
-.flex-and-items-centered {
-    display: flex;
-    align-items: center;
+.reset-margin {
+    margin: 0;
+}
+.border-box {
+    box-sizing: border-box;
 }

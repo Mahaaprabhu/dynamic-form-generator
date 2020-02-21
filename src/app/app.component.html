@@ -1,55 +1,71 @@
-<div class="main-container">
-    <div class="header-component flex-and-items-centered">
-        
-    </div>
-    <div class="editor-container">
-        <div class="editor-component">
-            <form>
-                <select class="ec-input-field" id="ec-form-select">
-                    <option>Select Form to Preview/Edit</option>
-                </select>
+<!--Header-->
+<header><h3 class="reset-margin border-box">Dynamic Form Generator</h3></header>
 
-                <input class="ec-input-button" type="button" value="Create New"/>
-                <br>
+<!--Container-->
+<div class="main-container border-box">
+    <!--Editor Panel-->
+    <section class="console border-box">
+        <h5 class="reset-margin">Editor Panel</h5>
+        <hr>
+        <br>
 
-                <input class="ec-input-field" placeholder="Form Name" type="text" id="ec-form-name"/>
-                <input class="ec-input-button" type="button" value="Save"/>
-                <br><br>
+        <input class="console-input" type="text" placeholder="Enter form id"/>
+        <br>
 
-                <label>Add New Element:</label>
-                <br>
-                <input class="ec-input-field" type="text" id="ec-element-label" placeholder="Enter Element's Label"/>
-                <br>
+        <input class="console-input" type="text" placeholder="Enter form display label"/>
+        <br><br>
 
-                <select class="ec-input-field" id="ec-element-type">
-                    <option value="">Select Element  Type</option>
-                </select>
-                <br>
+        <form>
+            <input class="console-input" type="text" placeholder="Enter element id"/>
+            <br>
 
-                <select class="ec-input-field" id="ec-element-data-type">
-                    <option value="">Select Element Data Type</option>
-                </select>
-                <br>
+            <input class="console-input" type="text" placeholder="Enter element display label"/>
+            <br>
 
-                <select class="ec-input-field"  id="ec-element-required">
-                    <option value="">Active by default?</option>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </select>
-                <br>
+            <select class="console-input">
+                <option value="">Select element type</option>
+                <option value="text">text</option>
+                <option value="select">select</option>
+            </select>
+            <br>
 
-                <input class="ec-input-field" type="text" id="ec-element-depends-on" placeholder="Comma Seperated Element Ids"/>
+            <select class="console-input">
+                <option value="">Select element data type</option>
+                <option value="text">string</option>
+                <option value="number">number</option>
+                <option value="boolean">boolean</option>
+            </select>
+            <br>
 
-                <input class="ec-input-button" type="submit" value="Add Element"/>
-                <br>
+            <select class="console-input">
+                <option value="">Required element?</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <br>
 
-            </form>
-        </div>
-        <div class="preview-component">
+            <select class="console-input">
+                <option value="">Active by default?</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <br>
 
-        </div>
-    </div>
-    <div class="footer-component flex-and-items-centered">
-        <h5 class="no-margin">Dynamic FORM Generator</h5>
-    </div>
+            <input class="console-input" type="text" placeholder="Enter parent element ids"/>
+            <br>
+
+            <input class="console-button" type="submit" value="Add Element"/>
+            <br><br>
+            <input class="console-button-large" type="submit" value="Submit Form"/>
+        </form>
+    </section>
+
+    <!--Preview Panel-->
+    <section class="console border-box">
+        <h5 class="reset-margin">Preview Panel</h5>
+        <hr>
+    </section>
 </div>
+
+<!--Header-->
+<footer><h6 class="reset-margin border-box">Dyna Form</h6></footer>
