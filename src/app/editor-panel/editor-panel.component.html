@@ -4,27 +4,27 @@
     <hr>
     <br>
 
-    <input class="console-input" type="text" placeholder="Enter form id" />
+    <input [(ngModel)]="formId" class="console-input" type="text" placeholder="Enter form id" />
     <br>
 
-    <input class="console-input" type="text" placeholder="Enter form display label" />
+    <input [(ngModel)]="formDisplayLabel" class="console-input" type="text" placeholder="Enter form display label" />
     <br><br>
 
-    <form>
-        <input class="console-input" type="text" placeholder="Enter element id" />
+    <form [formGroup]="consoleElementGroup" (ngSubmit)="onSubmitElement()">
+        <input formControlName="elementId" class="console-input" type="text" placeholder="Enter element id" />
         <br>
 
-        <input class="console-input" type="text" placeholder="Enter element display label" />
+        <input formControlName="elementDisplayLabel" class="console-input" type="text" placeholder="Enter element display label" />
         <br>
 
-        <select class="console-input">
+        <select formControlName="elementType" class="console-input">
             <option value="">Select element type</option>
             <option value="text">text</option>
             <option value="select">select</option>
         </select>
         <br>
 
-        <select class="console-input">
+        <select formControlName="elementDataType" class="console-input">
             <option value="">Select element data type</option>
             <option value="text">string</option>
             <option value="number">number</option>
@@ -32,25 +32,25 @@
         </select>
         <br>
 
-        <select class="console-input">
+        <select formControlName="elementRequiredFlag" class="console-input">
             <option value="">Required element?</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select>
         <br>
 
-        <select class="console-input">
+        <select formControlName="elementActiveByDefaultFlag" class="console-input">
             <option value="">Active by default?</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select>
         <br>
 
-        <input class="console-input" type="text" placeholder="Enter parent element ids" />
+        <input formControlName="parentElementIds" class="console-input" type="text" placeholder="Enter parent element ids" />
         <br>
 
         <input class="console-button" type="submit" value="Add Element" />
         <br><br>
-        <input class="console-button-large" type="submit" value="Submit Form" />
+        <input class="console-button-large" type="button" value="Submit Form" />
     </form>
 </section>
