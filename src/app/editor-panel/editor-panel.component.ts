@@ -12,17 +12,11 @@ export class EditorPanelComponent implements OnInit {
   formId: string = undefined;
   formDisplayLabel: string = undefined;
 
-  consoleElementGroup: FormGroup = new FormGroup({
-    'elementId': new FormControl(''),
-    'elementDisplayLabel': new FormControl(''),
-    'elementType': new FormControl(''),
-    'elementDataType': new FormControl(''),
-    'elementRequiredFlag': new FormControl(''),
-    'elementActiveByDefaultFlag': new FormControl(''),
-    'parentElementIds': new FormControl('')
-  })
+  consoleElementGroup: FormGroup;
 
-  constructor() { }
+  constructor() {
+    this.setElementFormGroup();
+  }
 
   ngOnInit(): void {
   }
@@ -31,6 +25,19 @@ export class EditorPanelComponent implements OnInit {
     const elementMeta = this.consoleElementGroup.value;
     console.log(elementMeta);
     this.consoleElementGroup.reset();
+    this.setElementFormGroup();
+  }
+
+  private setElementFormGroup() {
+    this.consoleElementGroup = new FormGroup({
+      'elementId': new FormControl(''),
+      'elementDisplayLabel': new FormControl(''),
+      'elementType': new FormControl(''),
+      'elementDataType': new FormControl(''),
+      'elementRequiredFlag': new FormControl(''),
+      'elementActiveByDefaultFlag': new FormControl(''),
+      'parentElementIds': new FormControl('')
+    })
   }
 
 }
