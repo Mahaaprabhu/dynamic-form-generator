@@ -2,4 +2,22 @@
 <section class="console border-box">
     <h5 class="reset-margin">Preview Panel</h5>
     <hr>
+
+    <h3>{{formMeta.formDisplayLabel}}</h3>
+
+    <div class="element-box" *ngFor="let elementMeta of formMeta.elementsMeta">
+        <div class="element-wrapper">
+            <label>{{elementMeta.elementDisplayLabel}}</label><br>
+            <div [ngSwitch]="elementMeta.elementType">
+                <input class="console-input" *ngSwitchCase="'text'" type="text" />
+                <select class="console-input" *ngSwitchCase="'select'">
+                    <option *ngFor="let option of elementMeta.elementOptions" value="option">{{option}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="order-up">/\</div>
+        <div class="order">{{003}}</div>
+        <div class="order-down">\/</div>
+    </div>
+
 </section>

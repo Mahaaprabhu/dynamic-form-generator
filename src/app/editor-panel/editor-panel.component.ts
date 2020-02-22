@@ -32,6 +32,7 @@ export class EditorPanelComponent implements OnInit {
     this.consoleElementGroup = new FormGroup({
       'elementId': new FormControl(''),
       'elementDisplayLabel': new FormControl(''),
+      'elementOptions': new FormControl(''),
       'elementType': new FormControl(''),
       'elementDataType': new FormControl(''),
       'elementRequiredFlag': new FormControl(''),

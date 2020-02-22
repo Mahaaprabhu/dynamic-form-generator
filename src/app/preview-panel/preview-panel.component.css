@@ -1,10 +1,10 @@
 .console {
-    border: 1px solid black;
     overflow: scroll;
     margin: 40px;
     box-shadow: 10px 10px 10px black;
     padding: 20px 80px;
     background-color: whitesmoke;
+    max-height: 500px;
 }
 
 .console-input {
@@ -34,4 +34,61 @@
     width: 130px;
     border-radius: 50px;
     color: floralwhite;
+}
+
+.element-box {
+    display: grid;
+    grid-template-columns: [c1] 6fr [c2] 1fr;
+    grid-template-rows: [r1] 1fr [r2] 1fr [r3] 1fr [r4] 1fr;
+}
+
+.element-box {
+    padding: 10px 30px;
+    box-sizing: border-box;
+    margin: 10px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.element-wrapper {
+    grid-row-start: r1;
+    grid-row-end: r4;
+    grid-column-start: c1;
+    grid-column-end: c1;
+}
+
+.order-up {
+    grid-row-start: r1;
+    grid-row-end: r1;
+    grid-column-start: c2;
+    grid-column-end: c2;
+    text-align: center;
+    background-color: steelblue;
+    color: white;
+    width: 40px;
+    height: 20px;
+}
+
+.order {
+    grid-row-start: r2;
+    grid-row-end: r2;
+    grid-column-start: c2;
+    grid-column-end: c2;
+    text-align: center;
+    background-color: white;
+    color: black;
+    width: 40px;
+    height: 20px;
+}
+
+.order-down {
+    grid-row-start: r3;
+    grid-row-end: r3;
+    grid-column-start: c2;
+    grid-column-end: c2;
+    text-align: center;
+    background-color: steelblue;
+    color: white;
+    width: 40px;
+    height: 20px;
 }

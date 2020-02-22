@@ -1,10 +1,10 @@
 .console {
-    border: 1px solid black;
     overflow: scroll;
     margin: 40px;
     box-shadow: 10px 10px 10px black;
     padding: 20px 80px;
     background-color: whitesmoke;
+    min-height: 500px;
 }
 
 .console-input {
