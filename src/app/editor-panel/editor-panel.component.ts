@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AppStateService } from '../app-state.service';
+import { ElementMeta } from '../model/element-meta.model';
 
 @Component({
   selector: 'app-editor-panel',
@@ -8,13 +10,13 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class EditorPanelComponent implements OnInit {
 
-  
+
   formId: string = undefined;
   formDisplayLabel: string = undefined;
 
   consoleElementGroup: FormGroup;
 
-  constructor() {
+  constructor(private appStateService: AppStateService) {
     this.setElementFormGroup();
   }
 
@@ -22,7 +24,21 @@ export class EditorPanelComponent implements OnInit {
   }
 
   onSubmitElement() {
-    const elementMeta = this.consoleElementGroup.value;
+
+    const elementMeta: ElementMeta = {
+      elementOrder: this.consoleElementGroup.value['elementOrder'],
+      elementId: this.consoleElementGroup.value['elementId'],
+      elementDisplayLabel: this.consoleElementGroup.value['elementDisplayLabel'],
+      elementOptions: this.consoleElementGroup.value['elementOptions'].replace(/ /g, '').split(','),
+      elementType: this.consoleElementGroup.value['elementType'],
+      elementDataType: this.consoleElementGroup.value['elementDataType'],
+      elementRequiredFlag: this.consoleElementGroup.value['elementRequiredFlag'],
+      elementActiveByDefaultFlag: this.consoleElementGroup.value['elementActiveByDefaultFlag'],
+      parentElementIds: this.consoleElementGroup.value['parentElementIds'].replace(/ /g, '').split(',')
+    }
+
+    this.appStateService.addElementMetaToCurrentForm(this.formId, this.formDisplayLabel, elementMeta);
+    
     console.log(elementMeta);
     this.consoleElementGroup.reset();
     this.setElementFormGroup();

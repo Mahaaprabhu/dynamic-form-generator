@@ -1,189 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormMeta } from '../model/form-meta.object';
+import { Subscription } from 'rxjs';
+import { AppStateService } from '../app-state.service';
 
 @Component({
   selector: 'app-preview-panel',
   templateUrl: './preview-panel.component.html',
   styleUrls: ['./preview-panel.component.css']
 })
-export class PreviewPanelComponent implements OnInit {
+export class PreviewPanelComponent implements OnInit, OnDestroy {
 
-  formMeta: {
-    formId: string,
-    formDisplayLabel: string,
-    elementsMeta: {
-      elementId: string,
-      elementDisplayLabel: string,
-      elementOptions: string[],
-      elementType: string,
-      elementDataType: string,
-      elementRequiredFlag: boolean,
-      elementActiveByDefaultFlag: boolean,
-      parentElementIds: string[]
-    }[]
-  };
+  formMeta: FormMeta;
+  private currentFormMetaSubscription: Subscription;
 
-  constructor() { 
-    this.formMeta = {
-      formId: 'fid0001',
-      formDisplayLabel: 'Sample Display Form',
-      elementsMeta: [{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: undefined,
-        elementType: 'text',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: ['one', 'two', 'three'],
-        elementType: 'select',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: undefined,
-        elementType: 'text',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: ['one', 'two', 'three'],
-        elementType: 'select',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: undefined,
-        elementType: 'text',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: ['one', 'two', 'three'],
-        elementType: 'select',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: undefined,
-        elementType: 'text',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: ['one', 'two', 'three'],
-        elementType: 'select',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: undefined,
-        elementType: 'text',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: ['one', 'two', 'three'],
-        elementType: 'select',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: undefined,
-        elementType: 'text',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: ['one', 'two', 'three'],
-        elementType: 'select',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: undefined,
-        elementType: 'text',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: ['one', 'two', 'three'],
-        elementType: 'select',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: undefined,
-        elementType: 'text',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: ['one', 'two', 'three'],
-        elementType: 'select',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      },{
-        elementId: 'fhhe',
-        elementDisplayLabel: 'Enter/Select the value (from) here: ',
-        elementOptions: undefined,
-        elementType: 'text',
-        elementDataType: 'number',
-        elementRequiredFlag: true,
-        elementActiveByDefaultFlag: true,
-        parentElementIds: ['f1', 'f2']
-      }]
-    };
+  constructor(private appStateService: AppStateService) { 
+    this.currentFormMetaSubscription = this.appStateService
+    .getCurrentFormMeta().subscribe(formMetaData => {
+      this.formMeta = formMetaData;
+    });
   }
 
   ngOnInit(): void {
+
   }
 
+  ngOnDestroy(): void {
+    this.currentFormMetaSubscription.unsubscribe();
+  }
 }
