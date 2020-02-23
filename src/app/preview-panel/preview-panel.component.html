@@ -13,7 +13,7 @@
         <div class="element-box" *ngFor="let elementMeta of formMeta.elementsMeta">
             <div class="element-wrapper">
                 <div class="elemnt-id">
-                    <label>Id: {{elementMeta.elementId}}</label>
+                    <label># Element Id: <span class="dark-element-id">{{elementMeta.elementId}}</span></label>
                 </div>
                 <label>{{elementMeta.elementDisplayLabel}}</label><br>
                 <div [ngSwitch]="elementMeta.elementType">
@@ -23,9 +23,11 @@
                     </select>
                 </div>
             </div>
-            <div class="order-up">/\</div>
-            <div class="order">{{elementMeta.elementOrder}}</div>
-            <div class="order-down">\/</div>
+            <div class="order-control">
+                <div class="order-up">/\</div>
+                <div class="order">{{elementMeta.elementOrder}}</div>
+                <div class="order-down">\/</div>
+            </div>      
         </div>
     </div>
     

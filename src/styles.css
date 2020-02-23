@@ -51,6 +51,10 @@ html, body {
     color: floralwhite;
 }
 
+.console-button:disabled {
+    background-color: gray;
+}
+
 .console-button-large {
     background-color: steelblue;
     height: 40px;
@@ -59,6 +63,11 @@ html, body {
     color: floralwhite;
 }
 
-.invalid-input {
-    border-color: purple;
+.console-button-large:disabled {
+    background-color: gray;
 }
+
+.invalid-input {
+    border-color: rgb(250, 116, 116);;
+}
+

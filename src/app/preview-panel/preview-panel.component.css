@@ -1,13 +1,16 @@
+.console {
+    padding: 20px 20px;
+}
 
 .element-box {
     display: grid;
     grid-template-columns: [c1] 6fr [c2] 1fr;
-    grid-template-rows: [r1] 1fr [r2] 1fr [r3] 1fr [r4] 1fr;
+    grid-template-rows: [r1] 1fr [r2] auto [r3] auto;
     padding: 10px 30px;
     box-sizing: border-box;
     margin: 1px;
     margin-bottom: 2px;
-    box-shadow: 0px 10px 10px steelblue
+    box-shadow: 0px 0px 0px black
 }
 
 .element-wrapper {
@@ -17,11 +20,19 @@
     grid-column-end: c1;
 }
 
-.order-up {
+.order-control {
+    margin-top: 10px;
     grid-row-start: r1;
     grid-row-end: r1;
     grid-column-start: c2;
     grid-column-end: c2;
+    width: 40px;
+    height: 60px;
+    box-shadow: 0px 0px 10px black;
+    box-sizing: border-box;
+}
+
+.order-up {
     text-align: center;
     background-color: steelblue;
     color: white;
@@ -29,23 +40,20 @@
     height: 20px;
 }
 
+.order-up:hover {
+    background-color: black;
+    color: red;
+}
+
 .order {
-    grid-row-start: r2;
-    grid-row-end: r2;
-    grid-column-start: c2;
-    grid-column-end: c2;
     text-align: center;
     background-color: whitesmoke;
-    color: black;
+    color: steelblue;
     width: 40px;
     height: 20px;
 }
 
 .order-down {
-    grid-row-start: r3;
-    grid-row-end: r3;
-    grid-column-start: c2;
-    grid-column-end: c2;
     text-align: center;
     background-color: steelblue;
     color: white;
@@ -53,8 +61,18 @@
     height: 20px;
 }
 
+.order-down:hover {
+    background-color: black;
+    color: red;
+}
+
 .elemnt-id {
     color: inherit;
     padding: 5px;
-    opacity: 0.5;
+    color: steelblue;
+}
+
+.dark-element-id {
+    opacity: 1;
+    color: rgb(18, 65, 104);
 }

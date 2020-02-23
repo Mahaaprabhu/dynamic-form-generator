@@ -4,16 +4,14 @@
     <hr>
     <br>
 
-    <label>Form ID: {{formId}} </label>
+    <label>Form ID: <span class="value-label">{{formId}}</span></label>
     <br><br>
 
     <input [(ngModel)]="formDisplayLabel" class="console-input" type="text" placeholder="Enter form display label" />
-    <br><br>
+    <br><br><br>
 
     <form [formGroup]="consoleElementGroup" (ngSubmit)="onSubmitElement()">
-
-        <label>Element ID: </label>
-        <input class="clear-input" formControlName="elementId" type="text"/>
+        <label>Element ID: <span class="value-label">{{getNextElementId()}}</span></label>
         <br><br>
 
         <input formControlName="elementDisplayLabel" 
@@ -29,15 +27,14 @@
         </select>
         <br>
 
-        <input formControlName="regExPattern" class="console-input" type="text" placeholder="RegEx pattern" />
-        <br>
-        <br>
-
         <select formControlName="elementRequiredFlag" class="console-input">
             <option value="">Required element?</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select>
+        <br>
+
+        <input formControlName="regExPattern" class="console-input" type="text" placeholder="RegEx pattern" />
         <br>
 
         <input formControlName="elementOptions" class="console-input" type="text" placeholder="Enter element options" />
@@ -46,7 +43,7 @@
         <input formControlName="parentElementIds" class="console-input" type="text" placeholder="Enter parent element ids" />
         <br>
 
-        <input class="console-button" type="submit" value="Add Element" />
-        <input class="console-button-large" type="button" value="Submit Form" (click)="onSubmitForm()"/>
+        <input class="console-button" [disabled]="consoleElementGroup.invalid" type="submit" value="Add Element" />
+        <input class="console-button-large" [disabled]="!formMeta" type="button" value="Submit Form" (click)="onSubmitForm()"/>
     </form>
 </section>

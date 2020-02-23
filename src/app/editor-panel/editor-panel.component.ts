@@ -15,10 +15,10 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
 
   formId: number = Date.now();
   formDisplayLabel: string = undefined;
+  formMeta: FormMeta;
 
   consoleElementGroup: FormGroup;
   private elementCountTracker: number = 1;
-  private formMeta: FormMeta;
   private currentFormMetaSubscription: Subscription;
   
   constructor(private appStateService: AppStateService) {
