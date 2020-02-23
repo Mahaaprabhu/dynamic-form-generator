@@ -1,22 +1,42 @@
 <div class="forms-panel-container">
-    <div class="form-selecter">
-        <form>
-            <select class="console-input" id="form-selector">
-                <option value="">select a form to fill</option>
-            </select>
-            <input class="console-button" type="button" value="Select"/>
-        </form>
-    </div>
-    <div *ngIf="formMetasMapFromService">
-        <div  *ngFor="let mapEntry of formMetasMapFromService | keyvalue">
-            s{{mapEntry.key}} {{mapEntry.value.formMeta.formDisplayLabel || mapEntry.key}}
-        </div>
-    </div>
-    
-    <div class="form-wrapper-container">
-        <div class="form-submitter">
 
+    <div *ngIf="!formMetasMapFromService">
+        <span>Add some form in order to select.</span>
+    </div>
+
+    <div *ngIf="formMetasMapFromService">
+        <div class="form-selecter">
+            <form [formGroup]="selectFormGroup">
+                <select formControlName="selectedFormId" class="console-input" id="form-selector">
+                    <option value="">select a form to fill</option>
+                    <option *ngFor="let mapEntry of formMetasMapFromService | keyvalue" [value]="mapEntry.key">
+                        {{mapEntry.value.formMeta.formDisplayLabel || mapEntry.key}}</option>
+                </select>
+                <input class="console-button" type="button" value="Select" (click)="onFormSelect()" />
+            </form>
         </div>
+    </div>
+
+    <div *ngIf="selectedFormMeta" class="form-wrapper-container">
+        <form [formGroup]="selectedFormGroupControl" class="form-submitter" (ngSubmit)="onSubmitForm()">
+            <h3>#{{selectedFormMeta.formId}}</h3>
+            <h5>{{selectedFormMeta.formDisplayLabel}}</h5><br><br>
+            <div *ngFor="let elementMeta of selectedFormMeta.elementsMeta">
+                <label>{{elementMeta.elementDisplayLabel}}</label><br>
+                <div [ngSwitch]="elementMeta.elementType">
+                    <input [formControlName]="elementMeta.elementId" class="console-input" *ngSwitchCase="'text'"
+                        type="text"
+                        [ngClass]="{'invalid-input': isInvalidControl(elementMeta.elementId)}"/>
+                    <select [formControlName]="elementMeta.elementId" class="console-input" *ngSwitchCase="'select'">
+                        <option *ngFor="let option of elementMeta.elementOptions" value="option"
+                        [ngClass]="{'invalid-input': isInvalidControl(elementMeta.elementId)}">{{option}}</option>
+                    </select>
+                </div>
+                <br><br>
+            </div>
+            <input type="submit" value="Submit"/>
+        </form>
+
         <div class="result-viewer">
 
         </div>

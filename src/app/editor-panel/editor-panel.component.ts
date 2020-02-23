@@ -57,6 +57,8 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
     const formGroup: FormGroup = this.generateFormGroupControlFromMetaData(this.formMeta);
     console.log(formGroup);
     this.appStateService.addFormMeta(this.formMeta, formGroup);
+    this.formId = Date.now();
+    this.formDisplayLabel = undefined;
   }
 
   private generateFormGroupControlFromMetaData(formMetaData: FormMeta): FormGroup {
