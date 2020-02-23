@@ -29,12 +29,8 @@
         </select>
         <br>
 
-        <select formControlName="elementDataType" class="console-input">
-            <option value="">Select element data type</option>
-            <option value="text">string</option>
-            <option value="number">number</option>
-            <option value="boolean">boolean</option>
-        </select>
+        <input formControlName="regExPattern" class="console-input" type="text" placeholder="RegEx pattern" />
+        <br>
         <br>
 
         <select formControlName="elementRequiredFlag" class="console-input">
@@ -51,6 +47,6 @@
         <br>
 
         <input class="console-button" type="submit" value="Add Element" />
-        <input class="console-button-large" type="button" value="Submit Form" />
+        <input class="console-button-large" type="button" value="Submit Form" (click)="onSubmitForm()"/>
     </form>
 </section>

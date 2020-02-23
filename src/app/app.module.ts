@@ -10,6 +10,7 @@ import { EditorPanelComponent } from './editor-panel/editor-panel.component';
 import { PreviewPanelComponent } from './preview-panel/preview-panel.component';
 import { HomeComponent } from './home/home.component';
 import { DynaRouterModule } from './dyna-router.module';
+import { FormsPanelComponent } from './forms-panel/forms-panel.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DynaRouterModule } from './dyna-router.module';
     MainContainerComponent,
     EditorPanelComponent,
     PreviewPanelComponent,
-    HomeComponent
+    HomeComponent,
+    FormsPanelComponent
   ],
   imports: [
     BrowserModule,

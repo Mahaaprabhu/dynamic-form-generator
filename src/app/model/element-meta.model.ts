@@ -4,7 +4,7 @@ export class ElementMeta {
     elementDisplayLabel: string;
     elementOptions: string[];
     elementType: string;
-    elementDataType: string;
+    regExPattern: string;
     elementRequiredFlag: boolean;
     parentElementIds: string[];
 

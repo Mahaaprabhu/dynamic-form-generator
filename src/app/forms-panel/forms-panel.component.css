@@ -1,0 +1,24 @@
+.forms-panel-container {
+    box-sizing: border-box;
+    height: 90%;
+}
+
+.form-selecter {
+    width: 100%;
+    box-sizing: border-box;
+    height: 20%;
+    max-height: 100px;
+    padding: 20px 50px;
+}
+
+.form-wrapper-container {
+    
+}
+
+.form-submitter {
+
+}
+
+.result-viewer {
+
+}

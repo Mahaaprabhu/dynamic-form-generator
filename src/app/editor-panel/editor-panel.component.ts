@@ -34,13 +34,9 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
 
   onSubmitElement() {
 
-    console.log(this.consoleElementGroup.controls['elementDisplayLabel'].invalid);
     if(this.consoleElementGroup.invalid) {
       return;
-    }
-    console.log(this.consoleElementGroup);
-    console.log(this.formMeta);
-    
+    } 
     const elementMeta: ElementMeta = {
       elementOrder: this.formMeta && this.formMeta.elementsMeta
                     ? this.formMeta.elementsMeta.length + 1 : 1,
@@ -48,16 +44,41 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
       elementDisplayLabel: this.consoleElementGroup.value['elementDisplayLabel'] || 'Enter Something(?): ',
       elementOptions: this.consoleElementGroup.value['elementOptions'].replace(/ /g, '').split(','),
       elementType: this.consoleElementGroup.value['elementType'] || 'text',
-      elementDataType: this.consoleElementGroup.value['elementDataType'],
+      regExPattern: this.consoleElementGroup.value['regExPattern'] || '[.]*',
       elementRequiredFlag: this.consoleElementGroup.value['elementRequiredFlag'],
       parentElementIds: this.consoleElementGroup.value['parentElementIds'].replace(/ /g, '').split(',')
     }
-
-    this.appStateService.addElementMetaToCurrentForm(this.formId, this.formDisplayLabel, elementMeta);
-    
-    console.log(elementMeta);
+    this.appStateService.addElementMetaToCurrentForm(this.formId, this.formDisplayLabel, elementMeta); 
     this.consoleElementGroup.reset();
     this.setElementFormGroup();
+  }
+
+  onSubmitForm() {
+    const formGroup: FormGroup = this.generateFormGroupControlFromMetaData(this.formMeta);
+    console.log(formGroup);
+    this.appStateService.addFormMeta(this.formMeta, formGroup);
+  }
+
+  private generateFormGroupControlFromMetaData(formMetaData: FormMeta): FormGroup {
+    const formGroup: FormGroup = new FormGroup({});
+    formMetaData.elementsMeta.forEach(elementMeta => {
+      formGroup.registerControl(
+        elementMeta.elementId, this.generateFormControlFromMetaData(elementMeta)
+      );
+    });
+    return formGroup;
+  }
+
+  private generateFormControlFromMetaData(elementMeta: ElementMeta): FormControl {
+    const fomrControl = new FormControl(
+      {
+        required: elementMeta.elementRequiredFlag
+      },
+      [
+        Validators.pattern(elementMeta.regExPattern)
+      ]
+    );
+    return fomrControl;
   }
 
   private setElementFormGroup() {
@@ -66,7 +87,7 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
       'elementDisplayLabel': new FormControl('', [Validators.required]),
       'elementOptions': new FormControl(''),
       'elementType': new FormControl(''),
-      'elementDataType': new FormControl(''),
+      'regExPattern': new FormControl(''),
       'elementRequiredFlag': new FormControl(''),
       'elementActiveByDefaultFlag': new FormControl(''),
       'parentElementIds': new FormControl('')
