@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { MainContainerComponent } from './main-container/main-container.component';
 import { EditorPanelComponent } from './editor-panel/editor-panel.component';
 import { PreviewPanelComponent } from './preview-panel/preview-panel.component';
+import { HomeComponent } from './home/home.component';
+import { DynaRouterModule } from './dyna-router.module';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,14 @@ import { PreviewPanelComponent } from './preview-panel/preview-panel.component';
     FooterComponent,
     MainContainerComponent,
     EditorPanelComponent,
-    PreviewPanelComponent
+    PreviewPanelComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DynaRouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
