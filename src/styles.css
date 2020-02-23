@@ -68,6 +68,6 @@ html, body {
 }
 
 .invalid-input {
-    border-color: rgb(250, 116, 116);;
+    border-bottom: 1px dashed rgb(250, 116, 116);
 }
 

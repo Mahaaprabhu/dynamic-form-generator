@@ -7,6 +7,11 @@
             <input class="console-button" type="button" value="Select"/>
         </form>
     </div>
+    <div *ngIf="formMetasMapFromService">
+        <div  *ngFor="let mapEntry of formMetasMapFromService | keyvalue">
+            s{{mapEntry.key}} {{mapEntry.value.formMeta.formDisplayLabel || mapEntry.key}}
+        </div>
+    </div>
     
     <div class="form-wrapper-container">
         <div class="form-submitter">
