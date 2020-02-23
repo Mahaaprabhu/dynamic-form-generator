@@ -9,7 +9,7 @@ import { ElementMeta } from './model/element-meta.model';
 export class AppStateService {
 
   private currentFormMeta: FormMeta = undefined;
-  private formMetasMap: Map<string, FormMeta> = new Map<string, FormMeta>();
+  private formMetasMap: Map<number, FormMeta> = new Map<number, FormMeta>();
   private formMetasSubject: Subject<FormMeta> = new Subject<FormMeta>();
 
   constructor() { }
@@ -18,7 +18,7 @@ export class AppStateService {
     this.formMetasMap.set(formMeta.formId, formMeta);
   }
 
-  addElementMetaToCurrentForm(formId: string, formDisplayLabel: string, elementMeta: ElementMeta) {
+  addElementMetaToCurrentForm(formId: number, formDisplayLabel: string, elementMeta: ElementMeta) {
     if(!this.currentFormMeta) this.currentFormMeta = new FormMeta();
     this.currentFormMeta.formId = formId;
     this.currentFormMeta.formDisplayLabel = formDisplayLabel;

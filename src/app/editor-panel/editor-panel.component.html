@@ -4,20 +4,22 @@
     <hr>
     <br>
 
-    <input [(ngModel)]="formId" class="console-input" type="text" placeholder="Enter form id" />
-    <br>
+    <label>Form ID: {{formId}} </label>
+    <br><br>
 
     <input [(ngModel)]="formDisplayLabel" class="console-input" type="text" placeholder="Enter form display label" />
     <br><br>
 
     <form [formGroup]="consoleElementGroup" (ngSubmit)="onSubmitElement()">
-        <input formControlName="elementId" class="console-input" type="text" placeholder="Enter element id" />
-        <br>
 
-        <input formControlName="elementDisplayLabel" class="console-input" type="text" placeholder="Enter element display label" />
-        <br>
+        <label>Element ID: </label>
+        <input class="clear-input" formControlName="elementId" type="text"/>
+        <br><br>
 
-        <input formControlName="elementOptions" class="console-input" type="text" placeholder="Enter element options" />
+        <input formControlName="elementDisplayLabel" 
+               class="console-input" type="text" placeholder="Enter element display label" 
+               [ngClass]="{'invalid-input': consoleElementGroup.controls['elementDisplayLabel'].invalid}"
+        />
         <br>
 
         <select formControlName="elementType" class="console-input">
@@ -42,11 +44,7 @@
         </select>
         <br>
 
-        <select formControlName="elementActiveByDefaultFlag" class="console-input">
-            <option value="">Active by default?</option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-        </select>
+        <input formControlName="elementOptions" class="console-input" type="text" placeholder="Enter element options" />
         <br>
 
         <input formControlName="parentElementIds" class="console-input" type="text" placeholder="Enter parent element ids" />

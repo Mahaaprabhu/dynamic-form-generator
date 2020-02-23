@@ -35,3 +35,7 @@
     border-radius: 50px;
     color: floralwhite;
 }
+
+.invalid-input {
+    border-color: purple;
+}

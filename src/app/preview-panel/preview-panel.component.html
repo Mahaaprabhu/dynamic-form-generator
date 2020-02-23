@@ -12,6 +12,9 @@
 
         <div class="element-box" *ngFor="let elementMeta of formMeta.elementsMeta">
             <div class="element-wrapper">
+                <div class="elemnt-id">
+                    <label>Id: {{elementMeta.elementId}}</label>
+                </div>
                 <label>{{elementMeta.elementDisplayLabel}}</label><br>
                 <div [ngSwitch]="elementMeta.elementType">
                     <input class="console-input" *ngSwitchCase="'text'" type="text" />

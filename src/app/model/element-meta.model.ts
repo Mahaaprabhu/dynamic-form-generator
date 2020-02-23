@@ -6,7 +6,6 @@ export class ElementMeta {
     elementType: string;
     elementDataType: string;
     elementRequiredFlag: boolean;
-    elementActiveByDefaultFlag: boolean;
     parentElementIds: string[];
 
     constructor() {}

@@ -1,7 +1,7 @@
 import { ElementMeta } from './element-meta.model';
 
 export class FormMeta {
-    formId: string;
+    formId: number;
     formDisplayLabel: string;
     elementsMeta: ElementMeta[];
 
