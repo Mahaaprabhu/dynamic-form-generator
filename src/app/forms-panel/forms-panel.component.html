@@ -29,7 +29,7 @@
                             type="text" [ngClass]="{'invalid-input': isInvalidControl(elementMeta.elementId)}" />
                         <select [formControlName]="elementMeta.elementId" class="console-input"
                             *ngSwitchCase="'select'">
-                            <option *ngFor="let option of elementMeta.elementOptions" value="option"
+                            <option *ngFor="let option of elementMeta.elementOptions" [value]="option"
                                 [ngClass]="{'invalid-input': isInvalidControl(elementMeta.elementId)}">{{option}}
                             </option>
                         </select>
