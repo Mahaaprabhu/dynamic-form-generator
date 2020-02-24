@@ -46,8 +46,11 @@ export class FormsPanelComponent implements OnInit, OnDestroy {
       }
     }
     if (!currentElement) return true; //? Can this actually occurs? Verify!
-    const parentIds: string[] = currentElement.parentElementIds;
-    if (!parentIds) return true;
+    const parentIds: string[] = currentElement.allParentElementIds;
+    const triggerableParentIds: string[] = currentElement.anyParentElementIds;
+
+    //Check whether all the mandatory parent elemnts are active...
+    if(parentIds.length == 0 && triggerableParentIds.length == 0)  return true;
     for (let i = 0; i < parentIds.length; i++) {
       if (this.selectedFormGroupControl.controls[parentIds[i]]
         && (this.selectedFormGroupControl.controls[parentIds[i]].disabled
@@ -55,7 +58,18 @@ export class FormsPanelComponent implements OnInit, OnDestroy {
         return false;
       }
     }
-    return true;
+
+    //Check whether any of the triggerable parent elemnts are active...
+    if (triggerableParentIds.length == 0) return true;
+    for (let i = 0; i < triggerableParentIds.length; i++) {
+      if (this.selectedFormGroupControl.controls[triggerableParentIds[i]]
+        && this.selectedFormGroupControl.controls[triggerableParentIds[i]].enabled
+          && this.selectedFormGroupControl.controls[triggerableParentIds[i]].valid) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   isInvalidControl(controlName: string) {

@@ -46,8 +46,12 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
       elementType: this.consoleElementGroup.value['elementType'] || 'text',
       regExPattern: this.consoleElementGroup.value['regExPattern'] || '.*',
       elementRequiredFlag: this.consoleElementGroup.value['elementRequiredFlag'],
-      parentElementIds: this.consoleElementGroup.value['parentElementIds'].replace(/ /g, '').split(',')
+      allParentElementIds: this.consoleElementGroup.value['allParentElementIds'].replace(/ /g, '').split(','),
+      anyParentElementIds: this.consoleElementGroup.value['anyParentElementIds'].replace(/ /g, '').split(',')
     }
+    //filter out empty array elements
+    elementMeta.allParentElementIds = elementMeta.allParentElementIds.filter(el => el && true);
+    elementMeta.anyParentElementIds = elementMeta.anyParentElementIds.filter(el => el && true);
     this.appStateService.addElementMetaToCurrentForm(this.formId, this.formDisplayLabel, elementMeta); 
     this.consoleElementGroup.reset();
     this.setElementFormGroup();
@@ -89,7 +93,8 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
       'regExPattern': new FormControl(''),
       'elementRequiredFlag': new FormControl(''),
       'elementActiveByDefaultFlag': new FormControl(''),
-      'parentElementIds': new FormControl('')
+      'allParentElementIds': new FormControl(''),
+      'anyParentElementIds': new FormControl('')
     })
   }
 

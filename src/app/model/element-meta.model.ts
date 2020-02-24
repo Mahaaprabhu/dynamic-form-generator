@@ -6,7 +6,8 @@ export class ElementMeta {
     elementType: string;
     regExPattern: string;
     elementRequiredFlag: boolean;
-    parentElementIds: string[];
+    allParentElementIds: string[];
+    anyParentElementIds: string[];
 
     constructor() {}
 }
