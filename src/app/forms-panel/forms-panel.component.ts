@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormMeta } from '../model/form-meta.object';
 import { ElementMeta } from '../model/element-meta.model';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-forms-panel',
@@ -17,6 +18,8 @@ export class FormsPanelComponent implements OnInit, OnDestroy {
   private formMetasMapSubscription: Subscription;
   selectedFormMeta: FormMeta;
   selectedFormGroupControl: FormGroup;
+  resultMap: Map<string, {label: string; value: any}>  = new Map<string, any>();
+  displayResult: boolean = false;
 
   selectFormGroup: FormGroup = new FormGroup({
     'selectedFormId': new FormControl('')
@@ -75,7 +78,6 @@ export class FormsPanelComponent implements OnInit, OnDestroy {
   }
 
   isInvalidControl(controlName: string) {
-    console.log('ControlName: ', controlName)
     return this.selectedFormGroupControl.controls[controlName].invalid;
   }
 
@@ -87,7 +89,22 @@ export class FormsPanelComponent implements OnInit, OnDestroy {
   }
 
   onSubmitForm() {
-    console.log(this.selectedFormGroupControl);
+    this.resultMap = new Map<string, any>();
+    const resultElementIds: string[] = Object.keys(this.selectedFormGroupControl.value);
+    resultElementIds.forEach(eId => {
+      const eMeta: ElementMeta = this.getElementById(eId);
+      this.resultMap.set(eId, {label: eMeta.elementDisplayLabel, value: this.selectedFormGroupControl.value[eId]});
+    });
+    this.displayResult = true;
+    console.log(this.resultMap);
+  }
+
+  getElementById(elementId: string): ElementMeta {
+    if(!this.selectedFormMeta.elementsMeta) return undefined;
+    for(let i=0; i<this.selectedFormMeta.elementsMeta.length; i++) {
+      if(this.selectedFormMeta.elementsMeta[i].elementId == elementId) return this.selectedFormMeta.elementsMeta[i];
+    }
+    return undefined;
   }
 
 }

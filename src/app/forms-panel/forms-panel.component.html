@@ -17,9 +17,9 @@
         </div>
     </div>
 
-    <div class="form-wrapper-container">
+    <div *ngIf="!displayResult" class="form-wrapper-container">
         <form *ngIf="selectedFormMeta" [formGroup]="selectedFormGroupControl" class="form-submitter" (ngSubmit)="onSubmitForm()">
-            <h2 class="reset-margin">{{selectedFormMeta.formDisplayLabel || selectedFormMeta.formId}}</h2>
+            <h2>{{selectedFormMeta.formDisplayLabel || selectedFormMeta.formId}}</h2>
             <br>
             <div *ngFor="let elementMeta of selectedFormMeta.elementsMeta; let i = index">
                 <div *ngIf="canThisElementBeEnabled(elementMeta.elementId)">
@@ -36,12 +36,21 @@
                     </div>
                 </div>
             </div>
+            <br>
             <input class="console-button" type="submit" value="Submit" />
         </form>
+    </div>
 
-        <div class="result-viewer">
-
+    <div *ngIf="displayResult" class="result-viewer">
+        <h4>Form Submitted!</h4>
+        <div *ngFor="let item of resultMap | keyvalue; let i = index">
+            <em><label><strong>{{(i+1)}}).</strong> {{item.value.label}}:</label></em>
+            <br>
+            <em><label><strong>Response:{{' '}}</strong>{{item.value.value}}</label></em>
+            <br><br>
         </div>
+        <br>
+        <div routerLink="/home" class="console-button centered">Ok</div>
     </div>
 
 </div>

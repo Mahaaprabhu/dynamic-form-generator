@@ -12,7 +12,7 @@
     padding: 20px 50px;
 }
 
-.form-wrapper-container {
+.form-wrapper-container, .result-viewer {
     height: 70%;
     min-height: 300px;
     overflow: scroll;
@@ -24,10 +24,8 @@
     padding: 20px 10%;
 }
 
-.form-submitter {
-
-}
-
-.result-viewer {
-
+.centered {
+    text-align: center;
+    padding-top: 5px;
+    box-sizing: border-box;
 }
