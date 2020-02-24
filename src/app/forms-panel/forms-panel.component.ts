@@ -4,6 +4,7 @@ import { AppStateService } from '../app-state.service';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormMeta } from '../model/form-meta.object';
+import { ElementMeta } from '../model/element-meta.model';
 
 @Component({
   selector: 'app-forms-panel',
@@ -34,6 +35,27 @@ export class FormsPanelComponent implements OnInit, OnDestroy {
     const selectedFormId: number = Number(this.selectFormGroup.controls['selectedFormId'].value);
     this.selectedFormMeta = this.formMetasMapFromService.get(selectedFormId).formMeta;
     this.selectedFormGroupControl = this.formMetasMapFromService.get(selectedFormId).formGroupControl;
+  }
+
+  canThisElementBeEnabled(elementId: string): boolean {
+    let currentElement: ElementMeta;
+    for (let i = 0; i < this.selectedFormMeta.elementsMeta.length; i++) {
+      if (this.selectedFormMeta.elementsMeta[i].elementId == elementId) {
+        currentElement = this.selectedFormMeta.elementsMeta[i];
+        break;
+      }
+    }
+    if (!currentElement) return true; //? Can this actually occurs? Verify!
+    const parentIds: string[] = currentElement.parentElementIds;
+    if (!parentIds) return true;
+    for (let i = 0; i < parentIds.length; i++) {
+      if (this.selectedFormGroupControl.controls[parentIds[i]]
+        && (this.selectedFormGroupControl.controls[parentIds[i]].disabled
+          || this.selectedFormGroupControl.controls[parentIds[i]].invalid)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   isInvalidControl(controlName: string) {

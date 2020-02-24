@@ -19,22 +19,27 @@
 
     <div *ngIf="selectedFormMeta" class="form-wrapper-container">
         <form [formGroup]="selectedFormGroupControl" class="form-submitter" (ngSubmit)="onSubmitForm()">
-            <h3>#{{selectedFormMeta.formId}}</h3>
-            <h5>{{selectedFormMeta.formDisplayLabel}}</h5><br><br>
+            <h5>#{{selectedFormMeta.formId}}</h5><br>
+            <h5>#{{selectedFormMeta.formDisplayLabel}}</h5><br>
             <div *ngFor="let elementMeta of selectedFormMeta.elementsMeta">
-                <label>{{elementMeta.elementDisplayLabel}}</label><br>
-                <div [ngSwitch]="elementMeta.elementType">
-                    <input [formControlName]="elementMeta.elementId" class="console-input" *ngSwitchCase="'text'"
-                        type="text"
-                        [ngClass]="{'invalid-input': isInvalidControl(elementMeta.elementId)}"/>
-                    <select [formControlName]="elementMeta.elementId" class="console-input" *ngSwitchCase="'select'">
-                        <option *ngFor="let option of elementMeta.elementOptions" value="option"
-                        [ngClass]="{'invalid-input': isInvalidControl(elementMeta.elementId)}">{{option}}</option>
-                    </select>
+                <div *ngIf="canThisElementBeEnabled(elementMeta.elementId)">
+                    <label>#{{elementMeta.formId}}</label><br>
+                    <label>{{elementMeta.elementDisplayLabel}}</label><br>
+                    <div [ngSwitch]="elementMeta.elementType">
+                        <input [formControlName]="elementMeta.elementId" class="console-input" *ngSwitchCase="'text'"
+                            type="text" [ngClass]="{'invalid-input': isInvalidControl(elementMeta.elementId)}" />
+                        <select [formControlName]="elementMeta.elementId" class="console-input"
+                            *ngSwitchCase="'select'">
+                            <option *ngFor="let option of elementMeta.elementOptions" value="option"
+                                [ngClass]="{'invalid-input': isInvalidControl(elementMeta.elementId)}">{{option}}
+                            </option>
+                        </select>
+                    </div>
                 </div>
-                <br><br>
             </div>
-            <input type="submit" value="Submit"/>
+
+            <input type="submit" value="Submit" />
+
         </form>
 
         <div class="result-viewer">

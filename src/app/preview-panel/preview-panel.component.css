@@ -76,3 +76,9 @@
     opacity: 1;
     color: rgb(18, 65, 104);
 }
+
+.in-transit {
+    box-shadow: 1px 1px 10px black;
+    transition: ease-in-out;
+    transition-duration: 1s;
+}

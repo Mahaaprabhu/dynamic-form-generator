@@ -10,7 +10,11 @@
     <div *ngIf="formMeta">
         <h3>{{formMeta.formDisplayLabel}}</h3>
 
-        <div class="element-box" *ngFor="let elementMeta of formMeta.elementsMeta">
+        <div class="element-box" *ngFor="let elementMeta of formMeta.elementsMeta" 
+            [ngClass]="{
+                'in-transit': (inTransitElementId == elementMeta.elementId)
+            }"
+        >
             <div class="element-wrapper">
                 <div class="elemnt-id">
                     <label># Element Id: <span class="dark-element-id">{{elementMeta.elementId}}</span></label>
@@ -24,9 +28,9 @@
                 </div>
             </div>
             <div class="order-control">
-                <div class="order-up">/\</div>
+                <div class="order-up" (click)="onMoveUp(elementMeta.elementId)">/\</div>
                 <div class="order">{{elementMeta.elementOrder}}</div>
-                <div class="order-down">\/</div>
+                <div class="order-down" (click)="onMoveDown(elementMeta.elementId)">\/</div>
             </div>      
         </div>
     </div>

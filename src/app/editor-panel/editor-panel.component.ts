@@ -44,7 +44,7 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
       elementDisplayLabel: this.consoleElementGroup.value['elementDisplayLabel'] || 'Enter Something(?): ',
       elementOptions: this.consoleElementGroup.value['elementOptions'].replace(/ /g, '').split(','),
       elementType: this.consoleElementGroup.value['elementType'] || 'text',
-      regExPattern: this.consoleElementGroup.value['regExPattern'] || '[.]*',
+      regExPattern: this.consoleElementGroup.value['regExPattern'] || '.*',
       elementRequiredFlag: this.consoleElementGroup.value['elementRequiredFlag'],
       parentElementIds: this.consoleElementGroup.value['parentElementIds'].replace(/ /g, '').split(',')
     }
@@ -55,7 +55,6 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
 
   onSubmitForm() {
     const formGroup: FormGroup = this.generateFormGroupControlFromMetaData(this.formMeta);
-    console.log(formGroup);
     this.appStateService.addFormMeta(this.formMeta, formGroup);
     this.formId = Date.now();
     this.formDisplayLabel = undefined;
@@ -73,12 +72,10 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
 
   private generateFormControlFromMetaData(elementMeta: ElementMeta): FormControl {
     const fomrControl = new FormControl(
-      {
-        required: elementMeta.elementRequiredFlag
-      },
-      [
-        Validators.pattern(elementMeta.regExPattern)
-      ]
+      '',
+      elementMeta.elementRequiredFlag
+      ? [ Validators.pattern(elementMeta.regExPattern), Validators.required ]
+      : [ Validators.pattern(elementMeta.regExPattern) ]
     );
     return fomrControl;
   }
@@ -108,6 +105,7 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.currentFormMetaSubscription.unsubscribe();
+    this.appStateService.resetFormMeta();
   }
 }
 
