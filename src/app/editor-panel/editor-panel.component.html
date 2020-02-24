@@ -37,15 +37,16 @@
         <input formControlName="regExPattern" class="console-input" type="text" placeholder="RegEx pattern" />
         <br>
 
-        <input formControlName="elementOptions" class="console-input" type="text" placeholder="Enter element options" />
+        <input formControlName="elementOptions" class="console-input" type="text"
+         placeholder="Element options (ex: op1,op2,..opn)" />
         <br>
 
         <input formControlName="allParentElementIds" class="console-input" type="text"
-         placeholder="Parent (all) element ids (ex: e1,e2)" />
+         placeholder="Parent (all) element ids (ex: e1,e2,..en)" />
         <br>
 
         <input formControlName="anyParentElementIds" class="console-input" type="text" 
-        placeholder="Parent (any) element ids (ex: e1,e2)" />
+        placeholder="Parent (any) element ids (ex: e1,e2,..en)" />
         <br>
 
         <input class="console-button" [disabled]="consoleElementGroup.invalid" type="submit" value="Add Element" />

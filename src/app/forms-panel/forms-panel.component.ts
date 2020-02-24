@@ -32,7 +32,9 @@ export class FormsPanelComponent implements OnInit, OnDestroy {
   }
 
   onFormSelect() {
+    if(!this.selectFormGroup || !this.selectFormGroup.controls['selectedFormId']) return;
     const selectedFormId: number = Number(this.selectFormGroup.controls['selectedFormId'].value);
+    if(!selectedFormId || selectedFormId == 0) return;
     this.selectedFormMeta = this.formMetasMapFromService.get(selectedFormId).formMeta;
     this.selectedFormGroupControl = this.formMetasMapFromService.get(selectedFormId).formGroupControl;
   }

@@ -20,8 +20,6 @@ export class AppStateService {
 
   addFormMeta(formMeta: FormMeta, formGroupControl: FormGroup) {
     this.formMetasMap.set(formMeta.formId, {formMeta, formGroupControl});
-    console.log('from service:');
-    console.log(this.formMetasMap);
     this.formMetasMapSubject.next(this.formMetasMap);
     this.resetFormMeta();
   }
@@ -45,14 +43,10 @@ export class AppStateService {
   }
 
   triggerSubjectPush() {
-    console.log('Triggerred')
     this.formMetasMapSubject.next(this.formMetasMap);
   }
 
   getFormMetasMap() : Observable<Map<number, FormMetaPairs>> {
-    console.log('before sending: ');
-    console.log(this.formMetasMap);
-    console.log(this.formMetasMapSubject);
     return this.formMetasMapSubject.asObservable();
   }
 

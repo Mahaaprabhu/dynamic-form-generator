@@ -1,5 +1,6 @@
 header {
     height: 6%;
+    display: flex;
     box-sizing: border-box;
     padding: 10px 15px 10px 30px;
     color: powderblue;

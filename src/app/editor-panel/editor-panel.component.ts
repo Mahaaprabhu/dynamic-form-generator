@@ -4,6 +4,7 @@ import { AppStateService } from '../app-state.service';
 import { ElementMeta } from '../model/element-meta.model';
 import { FormMeta } from '../model/form-meta.object';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editor-panel',
@@ -21,7 +22,7 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
   private elementCountTracker: number = 1;
   private currentFormMetaSubscription: Subscription;
   
-  constructor(private appStateService: AppStateService) {
+  constructor(private appStateService: AppStateService, private router: Router) {
     this.setElementFormGroup();
     this.currentFormMetaSubscription = this.appStateService
     .getCurrentFormMeta().subscribe(formMetaData => {
@@ -62,6 +63,7 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
     this.appStateService.addFormMeta(this.formMeta, formGroup);
     this.formId = Date.now();
     this.formDisplayLabel = undefined;
+    this.router.navigate(['/home']);
   }
 
   private generateFormGroupControlFromMetaData(formMetaData: FormMeta): FormGroup {
