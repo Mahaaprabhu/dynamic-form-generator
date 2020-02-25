@@ -34,6 +34,7 @@ export class FormsPanelComponent implements OnInit, OnDestroy {
   }
 
   onFormSelect() {
+    this.displayResult = false;
     if(!this.selectFormGroup || !this.selectFormGroup.controls['selectedFormId']) return;
     const selectedFormId: number = Number(this.selectFormGroup.controls['selectedFormId'].value);
     if(!selectedFormId || selectedFormId == 0) return;
