@@ -28,6 +28,7 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
     .getCurrentFormMeta().subscribe(formMetaData => {
       this.formMeta = formMetaData;
     });
+    this.addSampleMockForm();
   }
 
   ngOnInit(): void {
@@ -59,7 +60,16 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
     this.setElementFormGroup();
   }
 
+  addSampleMockForm(): void {
+    const mockSampleFormMeta: FormMeta = this.appStateService.getAMockSampleFormMeta();
+    const formGroup: FormGroup = this.generateFormGroupControlFromMetaData(mockSampleFormMeta);
+    this.appStateService.addFormMeta(mockSampleFormMeta, formGroup);
+    console.log('Sample Form Data injected...!');
+    console.log(mockSampleFormMeta);
+  }
+
   onSubmitForm() {
+    console.log(JSON.stringify(this.formMeta));
     const formGroup: FormGroup = this.generateFormGroupControlFromMetaData(this.formMeta);
     this.appStateService.addFormMeta(this.formMeta, formGroup);
     this.formId = Date.now();
