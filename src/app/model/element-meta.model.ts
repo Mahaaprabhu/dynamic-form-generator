@@ -8,6 +8,7 @@ export class ElementMeta {
     elementRequiredFlag: boolean;
     allParentElementIds: string[];
     anyParentElementIds: string[];
+    parentElementWithValue: string;
 
     constructor() {}
 }

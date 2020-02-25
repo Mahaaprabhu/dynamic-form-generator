@@ -48,7 +48,8 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
       regExPattern: this.consoleElementGroup.value['regExPattern'] || '.*',
       elementRequiredFlag: this.consoleElementGroup.value['elementRequiredFlag'],
       allParentElementIds: this.consoleElementGroup.value['allParentElementIds'].replace(/ /g, '').split(','),
-      anyParentElementIds: this.consoleElementGroup.value['anyParentElementIds'].replace(/ /g, '').split(',')
+      anyParentElementIds: this.consoleElementGroup.value['anyParentElementIds'].replace(/ /g, '').split(','),
+      parentElementWithValue: this.consoleElementGroup.value['parentElementWithValue']
     }
     //filter out empty array elements
     elementMeta.allParentElementIds = elementMeta.allParentElementIds.filter(el => el && true);
@@ -96,7 +97,8 @@ export class EditorPanelComponent implements OnInit, OnDestroy {
       'elementRequiredFlag': new FormControl(''),
       'elementActiveByDefaultFlag': new FormControl(''),
       'allParentElementIds': new FormControl(''),
-      'anyParentElementIds': new FormControl('')
+      'anyParentElementIds': new FormControl(''),
+      'parentElementWithValue': new FormControl('', [Validators.pattern('^.*[:].*$')]),
     })
   }
 

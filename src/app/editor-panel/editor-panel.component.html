@@ -49,6 +49,11 @@
         placeholder="Parent (any) element ids (ex: e1,e2,..en)" />
         <br>
 
+        <input formControlName="parentElementWithValue" class="console-input" type="text" 
+        placeholder="Parent element id with value (e1:value)"
+        [ngClass]="{'invalid-input': consoleElementGroup.controls['parentElementWithValue'].invalid}" />
+        <br>
+
         <input class="console-button" [disabled]="consoleElementGroup.invalid" type="submit" value="Add Element" />
         <input class="console-button-large" [disabled]="!formMeta" type="button" value="Submit Form" (click)="onSubmitForm()"/>
     </form>
