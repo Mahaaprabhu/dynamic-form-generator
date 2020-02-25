@@ -50,4 +50,117 @@ export class AppStateService {
     return this.formMetasMapSubject.asObservable();
   }
 
+  getAMockSampleFormMeta(): FormMeta {
+    const jsonSampleForm: string = `
+    {
+      "formId": 1582636450869,
+      "formDisplayLabel": "Sample Form",
+      "elementsMeta": [
+        {
+          "elementOrder": 1,
+          "elementId": "e1",
+          "elementDisplayLabel": "CreatedBy:",
+          "elementOptions": [
+            ""
+          ],
+          "elementType": "text",
+          "regExPattern": ".*",
+          "elementRequiredFlag": "true",
+          "allParentElementIds": [],
+          "anyParentElementIds": [],
+          "parentElementWithValue": ""
+        },
+        {
+          "elementOrder": 2,
+          "elementId": "e2",
+          "elementDisplayLabel": "Description:",
+          "elementOptions": [
+            ""
+          ],
+          "elementType": "text",
+          "regExPattern": ".*",
+          "elementRequiredFlag": "true",
+          "allParentElementIds": [],
+          "anyParentElementIds": [],
+          "parentElementWithValue": ""
+        },
+        {
+          "elementOrder": 3,
+          "elementId": "e3",
+          "elementDisplayLabel": "Severity:",
+          "elementOptions": [
+            ""
+          ],
+          "elementType": "text",
+          "regExPattern": "[0-9]*",
+          "elementRequiredFlag": "true",
+          "allParentElementIds": [],
+          "anyParentElementIds": [],
+          "parentElementWithValue": ""
+        },
+        {
+          "elementOrder": 4,
+          "elementId": "e4",
+          "elementDisplayLabel": "Status:",
+          "elementOptions": [
+            "CANCELLED",
+            "COMPLETED"
+          ],
+          "elementType": "select",
+          "regExPattern": ".*",
+          "elementRequiredFlag": "true",
+          "allParentElementIds": [],
+          "anyParentElementIds": [],
+          "parentElementWithValue": ""
+        },
+        {
+          "elementOrder": 5,
+          "elementId": "e5",
+          "elementDisplayLabel": "CancelledReason:",
+          "elementOptions": [
+            "ENDUSER",
+            "OTHERS"
+          ],
+          "elementType": "select",
+          "regExPattern": ".*",
+          "elementRequiredFlag": "",
+          "allParentElementIds": [],
+          "anyParentElementIds": [],
+          "parentElementWithValue": "e4:CANCELLED"
+        },
+        {
+          "elementOrder": 6,
+          "elementId": "e6",
+          "elementDisplayLabel": "CancelledOtherDescription:",
+          "elementOptions": [
+            ""
+          ],
+          "elementType": "text",
+          "regExPattern": ".*",
+          "elementRequiredFlag": "",
+          "allParentElementIds": [],
+          "anyParentElementIds": [],
+          "parentElementWithValue": "e5:OTHERS"
+        },
+        {
+          "elementOrder": 7,
+          "elementId": "e7",
+          "elementDisplayLabel": "Comments:",
+          "elementOptions": [
+            ""
+          ],
+          "elementType": "text",
+          "regExPattern": ".*",
+          "elementRequiredFlag": "",
+          "allParentElementIds": [],
+          "anyParentElementIds": [],
+          "parentElementWithValue": "e4:COMPLETED"
+        }
+      ]
+    }
+    `;
+
+    return JSON.parse(jsonSampleForm);
+  }
+
 }
