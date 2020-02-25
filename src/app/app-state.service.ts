@@ -54,7 +54,7 @@ export class AppStateService {
     const jsonSampleForm: string = `
     {
       "formId": 1582636450869,
-      "formDisplayLabel": "Sample Form",
+      "formDisplayLabel": "Ticket Tracker (Sample Form)",
       "elementsMeta": [
         {
           "elementOrder": 1,
