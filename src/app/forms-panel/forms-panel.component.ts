@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormMeta } from '../model/form-meta.object';
 import { ElementMeta } from '../model/element-meta.model';
-import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-forms-panel',
@@ -54,8 +53,10 @@ export class FormsPanelComponent implements OnInit, OnDestroy {
     const parentIds: string[] = currentElement.allParentElementIds;
     const triggerableParentIds: string[] = currentElement.anyParentElementIds;
 
-    //Check whether all the mandatory parent elemnts are active...
-    if(parentIds.length == 0 && triggerableParentIds.length == 0)  return true;
+    //Check whether all the mandatory parent elements are active...
+    if(parentIds.length == 0 
+      && triggerableParentIds.length == 0
+      && (!currentElement.parentElementWithValue || !currentElement.parentElementWithValue.trim()))  return true;
     for (let i = 0; i < parentIds.length; i++) {
       if (this.selectedFormGroupControl.controls[parentIds[i]]
         && (this.selectedFormGroupControl.controls[parentIds[i]].disabled
@@ -64,6 +65,11 @@ export class FormsPanelComponent implements OnInit, OnDestroy {
       }
     }
 
+    //Check whether the parent with value constraint matches...
+    if(currentElement.parentElementWithValue && currentElement.parentElementWithValue.trim()){
+      return this.isParentWithValueExists(currentElement);
+    }
+    
     //Check whether any of the triggerable parent elemnts are active...
     if (triggerableParentIds.length == 0) return true;
     for (let i = 0; i < triggerableParentIds.length; i++) {
@@ -75,6 +81,17 @@ export class FormsPanelComponent implements OnInit, OnDestroy {
     }
 
     return false;
+  }
+
+  isParentWithValueExists(elementMeta: ElementMeta) {
+    const parentIdWithValue: string = elementMeta.parentElementWithValue;
+    if(!parentIdWithValue || !parentIdWithValue.trim()) return true;
+    const keyValuePair: string[] = parentIdWithValue.trim().split(':');
+    if(keyValuePair.length < 2) return false;
+    const parentElement: ElementMeta = this.getElementById(keyValuePair[0]);
+    if(!parentElement) return false;
+    const currentParentValue = this.selectedFormGroupControl.controls[parentElement.elementId].value;
+    return currentParentValue == keyValuePair[1];
   }
 
   isInvalidControl(controlName: string) {
