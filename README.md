@@ -1,9 +1,9 @@
                                         
-                                        ########## Dynamic Form Generator ##########
+                                        # ########## Dynamic Form Generator ##########
 
 
-# WHAT IS THIS APP IS ALL ABOUT?
-__________________________________
+# WHAT'S THIS APP ALL ABOUT?
+_____________________________
 * Dynamic Form Generator - Front end application framework designed in Angular 9 to demonstrate the conceptual logic behind the dynamic form generation.
 * This application demonstrates the ability to define/create/design html forms with validations at run time.
 
