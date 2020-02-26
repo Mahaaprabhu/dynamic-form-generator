@@ -109,7 +109,7 @@ __________________________________
 * Color code is in place to differentiate whether the values of form elements are valid or not (highlighted by red dotted border).
 * Only a form with valid element values can be submitted.
 
-##IMPORTANT NOTE:
+## IMPORTANT NOTE:
 * The available form template list will contain a SAMPLE FORM TEMPLATE - 'Ticker Tracker' if one had visited the FORM CREATOR page earlier (Using Create Form Link).
 * If sample form is not being displayed, in order to get the SAMPLE FORM TEMPLATE - 'Ticker Tracker', visit the FORM CREATOR Page and come back to this page (Forms Panel Page).
 
