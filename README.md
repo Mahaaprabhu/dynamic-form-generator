@@ -2,96 +2,96 @@
                                         ########## Dynamic Form Generator ##########
 
 
-### WHAT IS THIS APP IS ALL ABOUT?
+# WHAT IS THIS APP IS ALL ABOUT?
 __________________________________
 * Dynamic Form Generator - Front end application framework designed in Angular 9 to demonstrate the conceptual logic behind the dynamic form generation.
 * This application demonstrates the ability to define/create/design html forms with validations at run time.
 
 
 
-### FUNCTIONALITIES?
+# FUNCTIONALITIES?
 ____________________
 * 'Create Form' and 'Fill Form' are the two main functional components of this app.
 * Create Form Link: Leads to the 'form creator' page where the definition of a new form, it's elements and validation constraints can be configured and saved.
 * Fill Form Link: Leads to the page where a 'form'  (created using the above page) can be selected to fill data and submit.
 
-### IMPORTANT NOTE - SAMPLE PRE-BUILT FORM:
+## IMPORTANT NOTE - SAMPLE PRE-BUILT FORM:
 * A sample form will be injected ('Ticket Tracker ') to application's state as soon as (and only if) one visits to the FORM CREATOR Page.
 * The sample 'Ticket Tracker' form can be later selected from FORMS PANEL (cab be accessed by clicking the 'FILL FORM' button from the home page).
 
-### CREATE FORM -> FORM CREATOR PAGE - EDITOR & PREVIEW PANELS:
+## CREATE FORM -> FORM CREATOR PAGE - EDITOR & PREVIEW PANELS:
 * Form Creator Page has the Editor and Preview panels. 
 
 
 
 
-### EDITOR PANEL:
+# EDITOR PANEL:
 _________________
 * Editor panel has options to define the form definition.
 
-# Form ID: (Generated field)
+### Form ID: (Generated field)
 * Generated and managed by the application itself.
 
-# Form Display Name: (Optional field)
+### Form Display Name: (Optional field)
 * Name to display as a form header.
 
-# Element ID: (Generated field)
+### Element ID: (Generated field)
 * Generated and managed by the application itself.
 
-# Element Display Label: (Mandatory field)
+### Element Display Label: (Mandatory field)
 * Acts as the display label of the specifying element. 
 
-# Element Type: (Optional field)
+### Element Type: (Optional field)
 * As of now supports two options (can be extended easily though) 'text' for text box elements and 'select' for drop downs.
 * NOTE: Default is 'text'.
 * NOTE: If 'select' option is selected, the list of options should be defined in 'Element Options' field (as comma separated values).
 * NOTE: 'RegEx pattern' option allows one to add regex based constrains for the values of this selected element type.
 
-# Require Element: (Optional field)
+### Require Element: (Optional field)
 * If selected is 'Yes', then the generated form cannot be submitted without providing a valid value to this element.
 * NOTE: Default is 'No'.
 
-# RegEx pattern: (Optional field)
+### RegEx pattern: (Optional field)
 * Accepts a regular expression to be validated for the element's value during the form submission.
 
-# Element Options:  (Optional field, should be given for the elements of type 'select')
+### Element Options:  (Optional field, should be given for the elements of type 'select')
 * Accepts comma (,) separated values that will be used as options for drop down elements (If Element Type was selected as 'select').
 
-# Parent (all) element ids: (Optional field)
+### Parent (all) element ids: (Optional field)
 * Comma separated element IDs can be specified.
 * If given, then this element will get displayed only if 'all' the specified parent elements are active and are filled with valid data.
 * NOTE: Element ID can be noted during the element creation or in the preview panel (details are given below).
 * EXAMPLE: e1,e2,e3
   This implies that this element will be displayed only if all three elements with IDs 'e1', 'e2' and 'e3' are verified to be active and provided with valid data (based on the constraints configured).
 
-# Parent (any) element ids: (Optional field)
+### Parent (any) element ids: (Optional field)
 * Comma separated element IDs can be specified.
 * If given, then this element will get displayed only if any 'one' or 'more' of the specified parent element(s) is/are active and are filled with valid data.
 * NOTE: Element ID can be noted during the element creation or in the preview panel.
 * EXAMPLE: e1,e2,e3
   This implies that this element will be displayed only if 'one' or 'more' of the elements 'e1', 'e2' and 'e3' are active and provided with valid data.
 
-# Parent element id with value: (Optional field)
+### Parent element id with value: (Optional field)
 * A single colon (:) separated element id and it's expected value can be specified.
 * NOTE: Element ID can be noted during the element creation or in the preview panel.
 * EXAMPLE: 
   e1:yes 
   This implies that this element will be displayed only if element with id 'e1' is active and provided/selected with value 'yes'.
 
-# Mix of various parent element options:
+### Mix of various parent element options:
 * More than one of the above defined parent element fields can be used simultaneously.
 
-# 'Add Element' Button:
+### 'Add Element' Button:
 * Adds the specified element to the form definition.
 * One can choose to add more element definitions, or can click on 'Submit Form' button.
 
-# 'Submit Form' Button:
+### 'Submit Form' Button:
 * Saves the form definition along with the element definitions and will take one to the home page.
 
 
 
 
-### PREVIEW PANEL:
+# PREVIEW PANEL:
 __________________
 * Added form elements will get displayed in preview panel until the 'Submit Form' button is clicked.
 * Elements can be 'reordered' using the /\ and \/ arrow buttons.
@@ -101,7 +101,7 @@ __________________
 
 
 
-### FILL FORM -> FORMS PANEL PAGE:
+# FILL FORM -> FORMS PANEL PAGE:
 __________________________________
 * 'Forms Panel' page is where one can select the previously defined form templates (Read the following note section to know about the sample template).
 * Selected form template will be visible once the 'select' button is clicked.
@@ -109,7 +109,7 @@ __________________________________
 * Color code is in place to differentiate whether the values of form elements are valid or not (highlighted by red dotted border).
 * Only a form with valid element values can be submitted.
 
-IMPORTANT NOTE:
+##IMPORTANT NOTE:
 * The available form template list will contain a SAMPLE FORM TEMPLATE - 'Ticker Tracker' if one had visited the FORM CREATOR page earlier (Using Create Form Link).
 * If sample form is not being displayed, in order to get the SAMPLE FORM TEMPLATE - 'Ticker Tracker', visit the FORM CREATOR Page and come back to this page (Forms Panel Page).
 
@@ -118,7 +118,7 @@ NOTE: On form submission the element numbering is left intentionally as that of 
 
 
 
-### OTHER NOTES:
+# OTHER NOTES:
 ________________
 * This project was generated with Angular CLI version 9.0.2.
 * The app handles the data in memory (no external API services).
