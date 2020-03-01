@@ -1,5 +1,5 @@
                                         
-                                         ########## Dynamic Form Generator ##########
+#                                           ##### Dynamic Form Generator #####
 
 # App home page: https://mahaaprabhu.github.io/dynamic-form-generator/home
 
